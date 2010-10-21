@@ -87,10 +87,10 @@ alias mdb="mongod --dbpath db"
 alias reload="source ~/.zshrc"
 alias reloada="source ~/bin/dotfiles/bash/aliases"
 alias cata="cat ~/.dotfiles/bash/aliases"
-alias ea="mate -w ~/bin/dotfiles/bash/aliases && reloada"
-alias ee="mate -w ~/bin/dotfiles/bash/env && reload"
-alias ed="mate -w ~/bin/dotfiles"
-alias eh="mate -w ~/.ssh/config && reload"
+alias ea="vim  ~/bin/dotfiles/bash/aliases && reloada"
+alias ee="vim  ~/bin/dotfiles/bash/env && reload"
+alias ed="vim ~/bin/dotfiles"
+alias eh="vim ~/.ssh/config && reload"
 
 
 # apache / passenger
