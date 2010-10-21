@@ -1,0 +1,9 @@
+set guifont=Monaco:h12
+
+set antialias
+
+set columns=80                          " characters per line = 80
+set guioptions-=T                       " no toolbar
+
+
+

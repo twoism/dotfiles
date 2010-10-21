@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/twoism/dev/posterous'
+let g:netrw_dirhist_2='/Users/twoism/dev/unicode'
+let g:netrw_dirhist_3='/Users/twoism/dev/posterous'
+let g:netrw_dirhist_4='/Users/twoism/dev/api_spec'
+let g:netrw_dirhist_5='/Users/twoism/dev/posterous'
+let g:netrw_dirhist_6='/Users/twoism'

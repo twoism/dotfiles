@@ -1,0 +1,6 @@
+export PATH=/opt/ruby-enterprise-1.8.7-2010.01/bin:~/bin:/opt/local/bin:/opt/local/sbin:/usr/local/mysql/bin:/opt/local/bin/ruby:/usr/local/mongodb/bin:/Users/twoism/air/bin:/usr/local/share/npm/bin:$PATH
+
+export EDITOR='mate -w'
+
+
+

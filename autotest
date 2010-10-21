@@ -1,0 +1,44 @@
+require 'autotest/fsevent'
+require 'redgreen/autotest'  if ENV['RSPEC'] != 'true'
+require 'autotest/growl'
+require 'redgreen'
+
+
+# SPEAKING = false
+# DOOM_EDITION = false
+# BUUF = false
+# PENDING = false
+# STICKY = false
+# SUCCESS_SOUND = ''
+# FAILURE_SOUND = ''
+
+#run all tests for ANY file
+Autotest.add_hook(:initialize) do |at|
+  #at.clear_mappings
+  at.add_mapping(/.*/) do |filename, _|
+    Dir.glob('test/test_*.rb')
+    Dir.glob('test/*_test.rb')
+  end
+end
+
+Autotest.add_hook :initialize do |at|
+  unless ARGV.empty?
+    spec_dir = ENV['SPEC_EXT'] ? 'spec_ext' : 'spec'
+    
+    
+    at.clear_mappings
+    at.add_mapping(%r%^#{spec_dir}/.*/(.*)s?_spec.rb$%) { |filename, m|
+      if ARGV.include?(m[1])
+        filename
+      else
+        puts "skipping spec: #{filename}"
+      end
+    }
+    at.add_mapping(%r{^(app|lib)/.*/(.*)\.rb$}) { |_, m|
+      if ARGV.include?(m[2])
+        at.files_matching %r{^#{spec_dir}/.*/#{m[2]}_spec.rb$}
+      end
+    }
+  end
+end
+

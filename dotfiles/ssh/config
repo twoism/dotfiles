@@ -1,0 +1,8 @@
+Host db3
+  HostName db3.posterous.com
+  User posterstage
+  
+Host stage2
+  HostName stage2.posterous.com
+  User posterstage
+

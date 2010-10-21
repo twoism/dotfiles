@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+
+if ARGV.empty?
+  STDERR.puts "You need to provide a URL"
+  STDERR.puts "USAGE: #{$0} [user]:[pass]@[host] limit"
+end
+
+%w{rubygems xmlrpc/client open-uri nokogiri}.each {|f| require f }
+
+posts                   = []
+username,password,url   = *ARGV[0].match(/(.*):(.*)@(.*)/).captures
+
+puts "*"*100
+puts "Contacting: #{url}"
+puts "Username:   #{username}"
+puts "Password:   #{password}"
+puts "*"*100
+
+@doc            =  Nokogiri::HTML(open("http://"+url))
+@xmlrpc_url     = "http://#{url}/rsd.xml"
+@metaweblog_id  = Nokogiri::HTML(open(@xmlrpc_url, 'User-Agent' => 'Posterous/3.14159')).css("api[name=MetaWeblog]").first['blogid']
+@metaweblog_url = Nokogiri::HTML(open(@xmlrpc_url, 'User-Agent' => 'Posterous/3.14159')).css("api[name=MetaWeblog]").first['apilink']
+@server         = XMLRPC::Client.new2(@metaweblog_url, nil, 300)
+
+puts @metaweblog_id
+
+posts = @server.call("metaWeblog.getRecentPosts", @metaweblog_id.to_s, username, password, ARGV[1] || 1000)
+
+puts "Success: found #{posts.length} posts"
+puts "*"*100

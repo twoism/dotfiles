@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+if ARGV.empty?
+  STDERR.puts "You need to provide a service and a URL"
+  STDERR.puts "USAGE: #{$0} [url]"
+end
+
+%w{rubygems tumblr}.each {|f| require f }
+
+posts       = []
+tumblr_url  = ARGV[0]
+begin 
+  Tumblr::API.read(tumblr_url) do |pager|
+    pager.last_page.times do |page_number|
+      current_page = pager.page(page_number)
+      current_page.posts.each do |p| 
+        posts << p
+      end
+    end
+  end
+rescue Tumblr::API::ResponseError => e
+  puts e.response.inspect
+end
+
+puts "Success: found #{posts.length} posts"
