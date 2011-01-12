@@ -9,7 +9,7 @@ end
 
 posts       = []
 tumblr_url  = ARGV[0]
-begin 
+
   Tumblr::API.read(tumblr_url) do |pager|
     pager.last_page.times do |page_number|
       current_page = pager.page(page_number)
@@ -19,8 +19,6 @@ begin
       end
     end
   end
-rescue Tumblr::API::ResponseError => e
-  puts e.response.inspect
-end
+
 
 puts "Success: found #{posts.length} posts"

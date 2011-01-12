@@ -11,6 +11,8 @@ PROMPT='
 #############################
 # Other Options
 
+bindkey -v
+
 # setopt PRINT_EXIT_VALUE
 
 setopt CORRECT
