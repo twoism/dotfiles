@@ -1,8 +1,13 @@
 autoload -U colors
 colors
+
+function parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
 setopt prompt_subst
 PROMPT='
-%~ %{$fg_bold[green]%}$(vcprompt)
+%~ %{$fg_bold[red]%}$(parse_git_branch)
 → %{$reset_color%}'
 
 # Set RPROMPT to have info show up on the right, too.
