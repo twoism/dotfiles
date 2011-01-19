@@ -1,0 +1,39 @@
+#!/usr/bin/env ruby
+
+@dirs   = %w{lib spec}
+@files  = %w{README.mdown .gitignore spec/spec_helper.rb spec/spec.opts}
+
+@dirs.each {|dir| `mkdir #{dir}` }
+@files.each{|file| `touch #{file}` }
+
+GIT_IGNORE = <<-TEXT
+*.swp
+*.swo
+*.orig
+TEXT
+
+SPEC_OPTS = <<-TEXT
+--colour
+--format nested
+--loadby mtime
+TEXT
+
+SPEC_HELPER = <<-RUBY
+
+$LOAD_PATH.unshift(File.dirname(__FILE__))
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
+
+require 'spec'
+require 'spec/autorun'
+Spec::Runner.configure do |config|
+  config.mock_with :mocha
+end
+
+RUBY
+
+File.open('.gitignore','w') {|f| f.write GIT_IGNORE }
+File.open('spec/spec.opts','w') {|f| f.write SPEC_OPTS }
+File.open('spec/spec.opts','w') {|f| f.write SPEC_OPTS }
+File.open('spec/spec_helper.rb','w') {|f| f.write SPEC_HELPER }
+
+puts "done"

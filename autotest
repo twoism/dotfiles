@@ -3,6 +3,8 @@ require 'redgreen/autotest'  if ENV['RSPEC'] != 'true'
 require 'autotest/growl'
 require 'redgreen'
 
+#$: << File.join(File.dirname(__FILE__), 'spec')
+
 
 # SPEAKING = false
 # DOOM_EDITION = false
@@ -13,13 +15,6 @@ require 'redgreen'
 # FAILURE_SOUND = ''
 
 #run all tests for ANY file
-Autotest.add_hook(:initialize) do |at|
-  #at.clear_mappings
-  at.add_mapping(/.*/) do |filename, _|
-    Dir.glob('test/test_*.rb')
-    Dir.glob('test/*_test.rb')
-  end
-end
 
 Autotest.add_hook :initialize do |at|
   unless ARGV.empty?

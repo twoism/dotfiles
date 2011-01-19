@@ -56,6 +56,8 @@ nnoremap k gk
 
 nnoremap <leader>a :Ack
 inoremap jj <ESC>
+inoremap ,T <ESC><leader>t
+inoremap <C-;> :bn
 
 " windows and splits
 nnoremap <leader>w <C-w>v<C-w>l
