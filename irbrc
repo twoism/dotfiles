@@ -2,6 +2,8 @@
 require 'pp'
 # Make gems available
 require 'rubygems'
+ 
+require 'interactive_editor'
 
 # http://drnicutilities.rubyforge.org/map_by_method/
 require 'map_by_method'
