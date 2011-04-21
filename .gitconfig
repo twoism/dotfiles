@@ -2,3 +2,7 @@
 	name = twoism
 	email = signalstatic@gmail.com
 	editor = mate -w
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+	rebase = false

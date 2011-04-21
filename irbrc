@@ -105,7 +105,7 @@ class Object
         n = method.arity
         args = "(#{(1..n).collect {|i| "arg#{i}"}.join(", ")})"
       elsif method.arity < 0
-        n = -method.arity
+        n = -method.aritykkkkkk
         args = "(#{(1..n).collect {|i| "arg#{i}"}.join(", ")}, ...)"
       end
       klass = $1 if method.inspect =~ /Method: (.*?)#/

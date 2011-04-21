@@ -1,7 +1,7 @@
 require 'autotest/fsevent'
-require 'redgreen/autotest'  if ENV['RSPEC'] != 'true'
+#require 'redgreen/autotest'  if ENV['RSPEC'] != 'true'
 require 'autotest/growl'
-require 'redgreen'
+#require 'redgreen'
 
 #$: << File.join(File.dirname(__FILE__), 'spec')
 

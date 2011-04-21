@@ -7,7 +7,7 @@ function parse_git_branch() {
 
 setopt prompt_subst
 PROMPT='
-%~ %{$fg_bold[green]%}$(parse_git_branch)
+[$(whoami)@$(hostname)] %~ %{$fg_bold[green]%}$(parse_git_branch)
 → %{$reset_color%}'
 
 # Set RPROMPT to have info show up on the right, too.
