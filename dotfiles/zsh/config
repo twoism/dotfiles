@@ -7,7 +7,7 @@ function parse_git_branch() {
 
 setopt prompt_subst
 PROMPT='
-[$(whoami)@$(hostname)] %~ %{$fg_bold[green]%}$(parse_git_branch)
+[$(whoami)@$(hostname)][$(~/.rvm/bin/rvm-prompt i v g)] %~ %{$fg_bold[green]%}$(parse_git_branch)
 → %{$reset_color%}'
 
 # Set RPROMPT to have info show up on the right, too.

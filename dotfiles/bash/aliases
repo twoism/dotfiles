@@ -49,7 +49,6 @@ alias mdev="rake db:migrate RAILS_ENV=development"
 
 # posterous
 alias cdp="cd ~/dev/posterous/posterous"
-alias posterous="redis-server && QUEUE=* rake resque:work"
 
 # git
 alias checkout="git checkout "
