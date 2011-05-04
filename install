@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+
+require 'fileutils'
+include FileUtils
+
+puts `git clone git@github.com:posterous/dotfiles.git ~/bin`
+
+DOT_FILES = {
+  'irbrc' 						=> '.irbrc', 
+  'zshrc' 						=> '.zshrc', 
+  'dotfiles/bashrc' 	=> '.bashrc', 
+  'dotfiles/vimrc' 		=> '.vimrc',
+  'dotfiles/gvimrc' 	=> '.gvimrc', 
+  'dotfiles/autotest' => '.autotest'
+}
+
+DOT_FILES.map do |source, sym|
+  file_path = "#{ENV['HOME']}/#{sym}"
+  if File.exists? file_path
+    puts "#{file_path} exits. Moving to #{file_path}.bk"
+		FileUtils.mv(file_path,"#{file_path}.bk")
+  end
+	FileUtils.ln_s("#{ENV['HOME']}/bin/#{source}", "#{ENV['HOME']}/#{sym}")
+end
+
+puts `gem install --no-rdoc --no-ri map_by_method what_methods net-http-spy awesome_print looksee wirble sketches interactive_editor`
+
